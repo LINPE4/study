@@ -1,9 +1,7 @@
 package com.atguigu.other.exer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Before;
@@ -114,6 +112,7 @@ public class TestTransaction {
 					.reduce(Integer::sum);
 		
 		System.out.println(sum.get());
+
 	}
 	
 	
@@ -136,4 +135,28 @@ public class TestTransaction {
 		System.out.println(op.get());
 	}
 
+	//9. 统计年份次数
+	@Test
+	public void test9(){
+		Map<Integer, Long> map = transactions.stream().collect(Collectors.groupingBy((e) -> e.getYear(), Collectors.counting()));
+		System.out.println(map);
+	}
+
+	/**
+	 * 10. 根据年份统计归属
+	 */
+	@Test
+	public void test10(){
+		Map<Integer, List<Transaction>> collect = transactions.stream().collect(Collectors.toMap(Transaction::getYear,
+				p -> {
+					List<Transaction> list = new ArrayList<>();
+					list.add(p);
+					return list;
+				},
+				(List<Transaction> p1, List<Transaction> p2) -> {
+					p1.addAll(p2);
+					return p1;
+				}));
+		System.out.println(collect);
+	}
 }
