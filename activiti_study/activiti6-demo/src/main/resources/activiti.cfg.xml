@@ -39,7 +39,11 @@
 	</bean>
 	<bean id="processEngineConfiguration"
 		class="com.peter.activiti6.core.ShareniuProcessEngineConfiguration">
-
+		<property name="databaseType" value="mysql"></property>
+		<property name="processEngineLifecycleListener">
+			<bean
+					class="com.peter.activiti6.core.ShareniuProcessEngineLifecycleListener"></bean>
+		</property>
 		<property name="dataSource" ref="druidDataSource"></property>
 		<property name="beans">
 			<map>
