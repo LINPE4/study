@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="druidDataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://192.168.140.128:3306/activiti6ui?characterEncoding=UTF-8
+			</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+
+	</bean>
+	<bean id="student"
+		  class="com.peter.activiti6.ch1.Student">
+
+
+
+		<property name="age" value="18"></property>
+		<property name="name" value="分享牛"></property>
+
+	</bean>
+
+	<bean id="teacher"
+		  class="com.peter.activiti6.ch1.Teacher">
+		<property name="name" value="分享牛老师"></property>
+	</bean>
+	<bean id="processEngineConfiguration"
+		class="com.peter.activiti6.core.ShareniuProcessEngineConfiguration">
+
+		<property name="dataSource" ref="druidDataSource"></property>
+		<property name="beans">
+			<map>
+				<entry key="student" value-ref="student"></entry>
+			</map>
+		</property>
+		<!-- Database configurations -->
+		<!-- <property name="databaseSchemaUpdate" value="true" /> -->
+		<property name="databaseSchemaUpdate" value="create" />
+		<!-- <property name="databaseSchemaUpdate" value="create-drop" /> -->
+		<property name="processEngineName" value="shareniu"></property>
+		<property name="dbIdentityUsed" value="false"></property>
+		<property name="dbHistoryUsed" value="false"></property>
+		<!-- protected boolean isDbIdentityUsed = true; protected boolean isDbHistoryUsed
+			= true; -->
+	</bean>
+
+	<!-- <bean id="asyncExecutor" class="org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor"> 
+		<property name="defaultAsyncJobAcquireWaitTimeInMillis" value="1000" /> <property 
+		name="defaultTimerJobAcquireWaitTimeInMillis" value="1000" /> </bean> -->
+
+</beans>
