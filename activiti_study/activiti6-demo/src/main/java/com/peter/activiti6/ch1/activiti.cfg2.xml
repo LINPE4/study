@@ -23,8 +23,9 @@
 		</property>
 
 	</bean>
+
 	<bean id="student"
-		  class="com.peter.activiti6.ch1.Student">
+		class="com.peter.activiti6.ch1.Student">
 
 
 
@@ -34,15 +35,17 @@
 	</bean>
 
 	<bean id="teacher"
-		  class="com.peter.activiti6.ch1.Teacher">
+		class="com.peter.activiti6.ch1.Teacher">
 		<property name="name" value="分享牛老师"></property>
 	</bean>
-	<bean id="processEngineConfiguration"
+	<bean id="processEngineConfiguration1"
 		class="com.peter.activiti6.core.ShareniuProcessEngineConfiguration">
-		<property name="databaseType" value="mysql"></property>
+		
+		
+	 	<property name="databaseType" value="mysql"></property> 
 		<property name="processEngineLifecycleListener">
 			<bean
-					class="com.peter.activiti6.core.ShareniuProcessEngineLifecycleListener"></bean>
+				class="com.peter.activiti6.core.ShareniuProcessEngineLifecycleListener"></bean>
 		</property>
 		<property name="dataSource" ref="druidDataSource"></property>
 		<property name="beans">
@@ -57,7 +60,7 @@
 		<property name="processEngineName" value="shareniu"></property>
 		<property name="dbIdentityUsed" value="false"></property>
 		<property name="dbHistoryUsed" value="false"></property>
-		<!-- protected boolean isDbIdentityUsed = true; protected boolean isDbHistoryUsed
+		<!-- protected boolean isDbIdentityUsed = true; protected boolean isDbHistoryUsed 
 			= true; -->
 	</bean>
 

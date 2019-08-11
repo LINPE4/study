@@ -39,6 +39,13 @@
 	</bean>
 	<bean id="processEngineConfiguration"
 		class="com.peter.activiti6.core.ShareniuProcessEngineConfiguration">
+		<property name="configurators">
+
+			<list>
+
+				<bean class="com.peter.activiti6.core.ShareniuProcessEngineConfigurator"></bean>
+			</list>
+		</property>
 		<property name="databaseType" value="mysql"></property>
 		<property name="processEngineLifecycleListener">
 			<bean

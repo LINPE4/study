@@ -24,10 +24,35 @@
 
 	</bean>
 
-	<bean id="processEngineConfiguration"
-		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+	<bean id="student"
+		class="com.peter.activiti6.ch1.Student">
 
+
+
+		<property name="age" value="18"></property>
+		<property name="name" value="分享牛"></property>
+
+	</bean>
+
+	<bean id="teacher"
+		class="com.peter.activiti6.ch1.Teacher">
+		<property name="name" value="分享牛老师"></property>
+	</bean>
+	<bean id="processEngineConfiguration"
+		class="com.peter.activiti6.core.ShareniuProcessEngineConfiguration">
+
+		
+		<property name="databaseType" value="mysql"></property>
+		<property name="processEngineLifecycleListener">
+			<bean
+				class="com.peter.activiti6.core.ShareniuProcessEngineLifecycleListener"></bean>
+		</property>
 		<property name="dataSource" ref="druidDataSource"></property>
+		<property name="beans">
+			<map>
+				<entry key="student" value-ref="student"></entry>
+			</map>
+		</property>
 		<!-- Database configurations -->
 		<!-- <property name="databaseSchemaUpdate" value="true" /> -->
 		<property name="databaseSchemaUpdate" value="create" />
@@ -35,7 +60,7 @@
 		<property name="processEngineName" value="shareniu"></property>
 		<property name="dbIdentityUsed" value="false"></property>
 		<property name="dbHistoryUsed" value="false"></property>
-		<!-- protected boolean isDbIdentityUsed = true; protected boolean isDbHistoryUsed
+		<!-- protected boolean isDbIdentityUsed = true; protected boolean isDbHistoryUsed 
 			= true; -->
 	</bean>
 
