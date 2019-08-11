@@ -42,5 +42,12 @@
             <!-- 默认的版本为3.8.1，修改为4.x,因为3.x使用的为编程的方式，4.x为注解的形式。 -->
             <version>4.12</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>6.0.0</version>
+        </dependency>
     </dependencies>
 </project>

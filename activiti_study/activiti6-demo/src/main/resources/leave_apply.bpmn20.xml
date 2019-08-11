@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="leave" name="leave_apply" isExecutable="true">
+    <documentation>leave_apply</documentation>
+    <startEvent id="startEvent1"></startEvent>
+    <userTask id="sid-2CA79FD9-5ABE-4211-B42C-0BB2023036C7" name="a approve
+" activiti:assignee="peter-a">
+      <extensionElements>
+        <modeler:activiti-idm-assignee xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:activiti-idm-assignee>
+        <modeler:assignee-info-email xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-a@qq.com]]></modeler:assignee-info-email>
+        <modeler:assignee-info-firstname xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-a]]></modeler:assignee-info-firstname>
+        <modeler:assignee-info-lastname xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-a]]></modeler:assignee-info-lastname>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-EF7EE736-F9D9-4501-9CC5-3F198FD4DDC6" sourceRef="startEvent1" targetRef="sid-2CA79FD9-5ABE-4211-B42C-0BB2023036C7"></sequenceFlow>
+    <userTask id="sid-A385B698-2FDF-4DF3-879D-37ED1FDE388C" name="b/c approve
+" activiti:candidateUsers="peter-b,peter-c">
+      <extensionElements>
+        <modeler:user-info-email-peter-b xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-b@qq.com]]></modeler:user-info-email-peter-b>
+        <modeler:user-info-firstname-peter-b xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-b]]></modeler:user-info-firstname-peter-b>
+        <modeler:user-info-lastname-peter-b xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-b]]></modeler:user-info-lastname-peter-b>
+        <modeler:user-info-email-peter-c xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-c@qq.com]]></modeler:user-info-email-peter-c>
+        <modeler:user-info-firstname-peter-c xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-c]]></modeler:user-info-firstname-peter-c>
+        <modeler:user-info-lastname-peter-c xmlns:modeler="http://activiti.com/modeler"><![CDATA[peter-c]]></modeler:user-info-lastname-peter-c>
+        <modeler:activiti-idm-candidate-user xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:activiti-idm-candidate-user>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-D15EDF42-EC34-4E5F-B1BA-E4E3A3284F9F" sourceRef="sid-2CA79FD9-5ABE-4211-B42C-0BB2023036C7" targetRef="sid-A385B698-2FDF-4DF3-879D-37ED1FDE388C"></sequenceFlow>
+    <endEvent id="sid-0562178B-45EE-4961-A6A2-E04F593EFD4C"></endEvent>
+    <sequenceFlow id="sid-B1309EE0-E27B-4453-9457-5E088F815ED0" sourceRef="sid-A385B698-2FDF-4DF3-879D-37ED1FDE388C" targetRef="sid-0562178B-45EE-4961-A6A2-E04F593EFD4C"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_leave">
+    <bpmndi:BPMNPlane bpmnElement="leave" id="BPMNPlane_leave">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-2CA79FD9-5ABE-4211-B42C-0BB2023036C7" id="BPMNShape_sid-2CA79FD9-5ABE-4211-B42C-0BB2023036C7">
+        <omgdc:Bounds height="80.0" width="100.0" x="165.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A385B698-2FDF-4DF3-879D-37ED1FDE388C" id="BPMNShape_sid-A385B698-2FDF-4DF3-879D-37ED1FDE388C">
+        <omgdc:Bounds height="80.0" width="100.0" x="310.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0562178B-45EE-4961-A6A2-E04F593EFD4C" id="BPMNShape_sid-0562178B-45EE-4961-A6A2-E04F593EFD4C">
+        <omgdc:Bounds height="28.0" width="28.0" x="455.0" y="151.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-EF7EE736-F9D9-4501-9CC5-3F198FD4DDC6" id="BPMNEdge_sid-EF7EE736-F9D9-4501-9CC5-3F198FD4DDC6">
+        <omgdi:waypoint x="120.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="165.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D15EDF42-EC34-4E5F-B1BA-E4E3A3284F9F" id="BPMNEdge_sid-D15EDF42-EC34-4E5F-B1BA-E4E3A3284F9F">
+        <omgdi:waypoint x="265.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="310.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B1309EE0-E27B-4453-9457-5E088F815ED0" id="BPMNEdge_sid-B1309EE0-E27B-4453-9457-5E088F815ED0">
+        <omgdi:waypoint x="410.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="455.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

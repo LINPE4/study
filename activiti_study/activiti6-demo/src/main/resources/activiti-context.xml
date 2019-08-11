@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="druidDataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://192.168.140.128:3306/activiti6ui?characterEncoding=UTF-8
+			</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+
+	</bean>
+
+	<bean id="dataSourceTransactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+		<property name="dataSource" ref="druidDataSource"></property>
+	</bean>
+	
+	<bean id="processEngineConfiguration"
+		class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<!--<property name="deploymentResources" value="classpath:/process/*"></property>-->
+		<!-- default resource-parent-folder single-resource -->  <!-- 生成结果在表`ACT_RE_DEPLOYMENT`-->
+		<!--<property name="deploymentMode" value="resource-parent-folder"></property>-->
+
+		<property name="transactionManager"
+				  ref="dataSourceTransactionManager"></property>
+		<property name="databaseType" value="mysql"></property>
+		<property name="dataSource" ref="druidDataSource"></property>
+		<property name="databaseSchemaUpdate" value="true" />
+	</bean>
+
+	<bean id="processEngine"
+		  class="org.activiti.spring.ProcessEngineFactoryBean">
+		<property name="processEngineConfiguration"
+				  ref="processEngineConfiguration"></property>
+
+	</bean>
+
+	<bean id="repositoryService" factory-bean="processEngine"
+		  factory-method="getRepositoryService"></bean>
+</beans>
