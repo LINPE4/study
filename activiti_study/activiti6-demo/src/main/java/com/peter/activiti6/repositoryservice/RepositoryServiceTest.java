@@ -12,6 +12,9 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.util.zip.ZipInputStream;
 
+/**
+ * 部署流程引擎测试用例
+ */
 public class RepositoryServiceTest {
 
 	ProcessEngine defaultProcessEngine;
