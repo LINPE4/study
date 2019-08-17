@@ -20,6 +20,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+/**
+ * 模型与文档的转换、元素及坐标获取 测试
+ */
 public class BpmnModelTest {
 	ProcessEngine defaultProcessEngine;
 	RepositoryService repositoryService;
