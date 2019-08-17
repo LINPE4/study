@@ -16,9 +16,12 @@ public class App
         ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("dubbo-client.xml");
 
        //得到IGpHello的远程代理对象
-        IGpHello iGpHello = (IGpHello) context.getBean("gpHelloService");
+        for (int i = 0; i< 10; i++ ){
 
-        System.out.println(iGpHello.sayHello("Mic"));
+            IGpHello iGpHello = (IGpHello) context.getBean("gpHelloService");
+
+            System.out.println(iGpHello.sayHello("Mic"));
+        }
         Thread.sleep(4000);
 
         System.in.read();

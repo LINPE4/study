@@ -7,8 +7,7 @@
     <dubbo:application name="dubbo-client" owner="mic"/>
 
     <!--注册中心-->
-    <dubbo:registry address="zookeeper://192.168.140.128:2181" />
-
+    <dubbo:registry address="zookeeper://192.168.140.128:2181" check="false" file="d:/dubbo-server"/>
 
     <dubbo:reference id="gpHelloService"
                      interface="com.gupaoedu.dubbo.IGpHello"
