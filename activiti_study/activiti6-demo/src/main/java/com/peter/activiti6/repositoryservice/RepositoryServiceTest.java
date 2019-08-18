@@ -14,6 +14,9 @@ import java.util.zip.ZipInputStream;
 
 /**
  * 部署流程引擎测试用例
+ *
+ *  部署会插入
+ * 		`ACT_RE_DEPLOYMENT`，`ACT_RE_PROCDEF`，`ACT_GE_BYTEARRAY`
  */
 public class RepositoryServiceTest {
 
