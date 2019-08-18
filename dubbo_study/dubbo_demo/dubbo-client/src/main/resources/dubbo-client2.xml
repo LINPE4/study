@@ -9,9 +9,21 @@
     <!--注册中心-->
     <dubbo:registry address="zookeeper://192.168.140.128:2181" check="false" file="d:/dubbo-server"/>
 
+    <!--
+        version: 指定版本
+        cluster: 集群容错
+            1. failsafe 失败安全，可以认为是把错误吞掉（记录日志）
+            2. failover(默认) 重试其他服务器； retries（2）
+            3. failfast 快速失败， 失败以后立马报错
+            4. failback 失败后自动恢复。
+            5. forking forks. 设置并行数
+            6. broadcast 广播，任意一台报错，则执行的方法报错 配置方式如下，通过cluster方式，配置指定的容错方案
+        mock: 服务降级
+            不要与cluster共用
+    -->
     <dubbo:reference id="gpHelloService"
                      interface="com.gupaoedu.dubbo.IGpHello"
-                     protocol="dubbo" />
+                     protocol="dubbo" version="2.0.0" check="false" mock="com.gupaoedu.dubbo.TestMock" timeout="1"/>
 
 
 </beans>
