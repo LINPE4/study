@@ -31,7 +31,7 @@
 	</bean>
 	
 	<bean id="processEngineConfiguration"
-		class="org.activiti.spring.SpringProcessEngineConfiguration">
+		class="com.peter.activiti6.core.ShareniuProcessEngineConfigurationExt">
 		<!--<property name="deploymentResources" value="classpath:/process/*"></property>-->
 		<!-- default resource-parent-folder single-resource -->  <!-- 生成结果在表`ACT_RE_DEPLOYMENT`-->
 		<!--<property name="deploymentMode" value="resource-parent-folder"></property>-->
