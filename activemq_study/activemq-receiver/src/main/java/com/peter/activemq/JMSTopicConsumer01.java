@@ -23,6 +23,13 @@ public class JMSTopicConsumer01 {
             connection=connectionFactory.createConnection();
             connection.start();
 
+            /**
+             * Boolean.TRUE： 开启事务， 需要session.commit();才能消费消息
+             * Boolean.FALSE： 不开启事务
+             *      Session.AUTO_ACKNOWLEDGE  直接消费消息
+             *      CLIENT_ACKNOWLEDGE        需要session.commit();消费消息
+             *      DUPS_OK_ACKNOWLEDGE       延迟消费，存在重复消费的可能
+             */
             Session session=connection.createSession
                     (Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
             //创建目的地

@@ -26,6 +26,7 @@ public class JMSTopicProducer {
             Destination destination=session.createTopic("myTopic");
             //创建发送者
             MessageProducer producer=session.createProducer(destination);
+            producer.setDeliveryMode(DeliveryMode.PERSISTENT); //设置为持久化
 
             //创建需要发送的消息
             TextMessage message=session.createTextMessage("vip的上课时间是：周三、周六、周日");
