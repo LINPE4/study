@@ -35,7 +35,10 @@
 		<!--<property name="deploymentResources" value="classpath:/process/*"></property>-->
 		<!-- default resource-parent-folder single-resource -->  <!-- 生成结果在表`ACT_RE_DEPLOYMENT`-->
 		<!--<property name="deploymentMode" value="resource-parent-folder"></property>-->
-
+		<property name="idGenerator">
+			<bean class="com.peter.activiti6.core.ShareniuIdGenerator"></bean>
+			<!--<bean class="org.activiti.engine.impl.persistence.StrongUuidGenerator"></bean>-->
+		</property>
 		<property name="transactionManager"
 				  ref="dataSourceTransactionManager"></property>
 		<property name="databaseType" value="mysql"></property>
