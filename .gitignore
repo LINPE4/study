@@ -1,4 +1,7 @@
 *.class
 *.iml
 target
-.idea
+mvnw
+mvnw.*
+*.idea*
+.mvn
