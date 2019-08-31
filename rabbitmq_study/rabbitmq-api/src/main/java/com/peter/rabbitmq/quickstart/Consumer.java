@@ -16,7 +16,6 @@ public class Consumer {
 		connectionFactory.setHost("192.168.140.128");
 		connectionFactory.setPort(5672);
 		connectionFactory.setVirtualHost("/");
-		
 		//2 通过连接工厂创建连接
 		Connection connection = connectionFactory.newConnection();
 		
