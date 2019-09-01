@@ -1,18 +1,21 @@
 package com.peter.rabbitmq.config;
 
-import com.rabbitmq.client.Channel;
+import com.peter.rabbitmq.adapter.MessageDelegate;
+import com.peter.rabbitmq.convert.TextMessageConverter;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.ChannelAwareMessageListener;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.ConsumerTagStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -118,13 +121,36 @@ public class RabbitMQConfig {
                 return queue + "_" + UUID.randomUUID().toString();
             }
         });
-        container.setMessageListener(new ChannelAwareMessageListener() {
-        @Override
-        public void onMessage(Message message, Channel channel) throws Exception {
-            String msg = new String(message.getBody());
-            System.err.println("----------消费者: " + msg);
-        }
-        });
+
+//        container.setMessageListener(new ChannelAwareMessageListener() {
+//        @Override
+//        public void onMessage(Message message, Channel channel) throws Exception {
+//            String msg = new String(message.getBody());
+//            System.err.println("----------消费者: " + msg);
+//        }
+//        });
+
+        /**
+         * 1 适配器方式. 默认是有自己的方法名字的：handleMessage
+         // 可以自己指定一个方法的名字: consumeMessage
+         // 也可以添加一个转换器: 从字节数组转换为String
+         */
+//         MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+//         adapter.setDefaultListenerMethod("consumeMessage");
+//         adapter.setMessageConverter(new TextMessageConverter());
+//         container.setMessageListener(adapter);
+
+        /**
+         * 2 适配器方式: 我们的队列名称 和 方法名称 也可以进行一一的匹配
+         *
+         * */
+         MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+         adapter.setMessageConverter(new TextMessageConverter());
+         Map<String, String> queueOrTagToMethodName = new HashMap<>();
+         queueOrTagToMethodName.put("queue001", "method1");
+         queueOrTagToMethodName.put("queue002", "method2");
+         adapter.setQueueOrTagToMethodName(queueOrTagToMethodName);
+         container.setMessageListener(adapter);
 
         return container;
 
