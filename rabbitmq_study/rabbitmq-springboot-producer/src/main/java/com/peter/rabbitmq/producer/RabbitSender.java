@@ -1,5 +1,6 @@
 package com.peter.rabbitmq.producer;
 
+import com.peter.rabbitmq.entity.Order;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ConfirmCallback;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ReturnCallback;
@@ -50,6 +51,15 @@ public class RabbitSender {
 		//id + 时间戳 全局唯一 
 		CorrelationData correlationData = new CorrelationData("1234567890");
 		rabbitTemplate.convertAndSend("exchange-1", "springboot.abc", msg, correlationData);
+	}
+
+	//发送消息方法调用: 构建自定义对象消息
+	public void sendOrder(Order order) throws Exception {
+		rabbitTemplate.setConfirmCallback(confirmCallback);
+		rabbitTemplate.setReturnCallback(returnCallback);
+		//id + 时间戳 全局唯一
+		CorrelationData correlationData = new CorrelationData("0987654321");
+		rabbitTemplate.convertAndSend("exchange-2", "springboot.def", order, correlationData);
 	}
 	
 }
