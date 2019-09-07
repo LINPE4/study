@@ -1,6 +1,7 @@
 package com.peter.es;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.peter.es.model.Article;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
@@ -140,6 +141,26 @@ public class ElasticSearchClientClusterTest {
                 //设置文档信息
                 .setSource(builder)
                 //执行操作
+                .get();
+        //关闭客户端
+        client.close();
+    }
+
+    @Test
+    public void testAddDocument2() throws Exception {
+        //创建一个Article对象
+        Article article = new Article();
+        //设置对象的属性
+        article.setId(3l);
+        article.setTitle("MH370坠毁在柬埔寨密林?中国一公司调十颗卫星去拍摄");
+        article.setContent("警惕荒唐的死亡游戏!俄15岁少年输掉游戏后用电锯自杀");
+        //把article对象转换成json格式的字符串。
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonDocument = objectMapper.writeValueAsString(article);
+        System.out.println(jsonDocument);
+        //使用client对象把文档写入索引库
+        client.prepareIndex("index_hello","article", "3")
+                .setSource(jsonDocument, XContentType.JSON)
                 .get();
         //关闭客户端
         client.close();
