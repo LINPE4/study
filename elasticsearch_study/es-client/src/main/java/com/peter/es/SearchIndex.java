@@ -70,4 +70,80 @@ public class SearchIndex {
         QueryBuilder queryBuilder = QueryBuilders.idsQuery().addIds("1", "2");
         search(queryBuilder);
     }
+
+    /**
+     * 08.索引库查询-根据Term查询
+     * @throws Exception
+     */
+    @Test
+    public void testQueryByTerm() throws Exception {
+        //创建一个QueryBuilder对象
+        //参数1：要搜索的字段
+        //参数2：要搜索的关键词
+        QueryBuilder queryBuilder = QueryBuilders.termQuery("title", "北方");
+        //执行查询
+        search(queryBuilder);
+    }
+
+    /**
+     * 09.索引库查询-queryString查询
+     * @throws Exception
+     */
+    @Test
+    public void testQueryStringQuery() throws Exception {
+        //创建一个QueryBuilder对象
+        QueryBuilder queryBuilder = QueryBuilders.queryStringQuery("北方")
+                .defaultField("title");
+        //执行查询
+        search(queryBuilder, "title");
+    }
+
+    private void search(QueryBuilder queryBuilder, String highlightField) throws Exception {
+        HighlightBuilder highlightBuilder = new HighlightBuilder();
+        //高亮显示的字段
+        highlightBuilder.field(highlightField);
+        highlightBuilder.preTags("<em>");
+        highlightBuilder.postTags("</em>");
+        //执行查询
+        SearchResponse searchResponse = client.prepareSearch("index_hello")
+                .setTypes("article")
+                .setQuery(queryBuilder)
+                //设置分页信息
+                .setFrom(0)
+                //每页显示的行数
+                .setSize(5)
+                //设置高亮信息
+                .highlighter(highlightBuilder)
+                .get();
+        //取查询结果
+        SearchHits searchHits = searchResponse.getHits();
+        //取查询结果的总记录数
+        System.out.println("查询结果总记录数：" + searchHits.getTotalHits());
+        //查询结果列表
+        Iterator<SearchHit> iterator = searchHits.iterator();
+        while(iterator.hasNext()) {
+            SearchHit searchHit = iterator.next();
+            //打印文档对象，以json格式输出
+            System.out.println(searchHit.getSourceAsString());
+            //取文档的属性
+            System.out.println("-----------文档的属性");
+            Map<String, Object> document = searchHit.getSource();
+            System.out.println(document.get("id"));
+            System.out.println(document.get("title"));
+            System.out.println(document.get("content"));
+            System.out.println("************高亮结果");
+            Map<String, HighlightField> highlightFields = searchHit.getHighlightFields();
+            System.out.println(highlightFields);
+            //取title高亮显示的结果
+            HighlightField field = highlightFields.get(highlightField);
+            Text[] fragments = field.getFragments();
+            if (fragments != null) {
+                String title = fragments[0].toString();
+                System.out.println(title);
+            }
+
+        }
+        //关闭client
+        client.close();
+    }
 }
