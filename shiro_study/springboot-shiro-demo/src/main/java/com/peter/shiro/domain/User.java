@@ -12,6 +12,8 @@ public class User {
 
     private String username;
 
+    private String password;
+
     private Date createTime;
 
     private String salt;
@@ -60,5 +62,13 @@ public class User {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
