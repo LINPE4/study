@@ -1,9 +1,9 @@
 package com.peter.shiro.dao;
 
-
 import com.peter.shiro.domain.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
 
 public interface UserMapper {
 
