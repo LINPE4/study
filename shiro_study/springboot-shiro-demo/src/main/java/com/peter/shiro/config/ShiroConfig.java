@@ -71,14 +71,20 @@ public class ShiroConfig {
     public SecurityManager securityManager(){
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
-        securityManager.setRealm(customRealm());
+        //如果不是前后端分离，则不必设置下面的sessionManager
         securityManager.setSessionManager(sessionManager());
+
+        //设置realm（推荐放到最后，不然某些情况会不生效）
+        securityManager.setRealm(customRealm());
 
         return securityManager;
     }
 
 
-
+    /**
+     * 自定义realm
+     * @return
+     */
     @Bean
     public CustomRealm customRealm(){
         CustomRealm customRealm = new CustomRealm();
@@ -88,6 +94,10 @@ public class ShiroConfig {
     }
 
 
+    /**
+     * 密码加解密规则
+     * @return
+     */
     @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher(){
         HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
@@ -103,10 +113,14 @@ public class ShiroConfig {
 
 
 
+    //自定义sessionManager
     @Bean
     public SessionManager sessionManager(){
 
         CustomSessionManager customSessionManager = new CustomSessionManager();
+
+        //超时时间，默认 30分钟，会话超时；方法里面的单位是毫秒
+        customSessionManager.setGlobalSessionTimeout(20000);
 
         return customSessionManager;
     }
