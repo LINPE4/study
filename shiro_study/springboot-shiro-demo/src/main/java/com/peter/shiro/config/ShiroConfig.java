@@ -39,6 +39,7 @@ public class ShiroConfig {
         //拦截器路径，坑一，部分路径无法进行拦截，时有时无；因为同学使用的是hashmap, 无序的，应该改为LinkedHashMap
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
+//        DefaultFilter 枚举里面
         //退出过滤器
         filterChainDefinitionMap.put("/logout","logout");
 
@@ -89,7 +90,7 @@ public class ShiroConfig {
     public CustomRealm customRealm(){
         CustomRealm customRealm = new CustomRealm();
 
-        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+//        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return customRealm;
     }
 
@@ -120,7 +121,7 @@ public class ShiroConfig {
         CustomSessionManager customSessionManager = new CustomSessionManager();
 
         //超时时间，默认 30分钟，会话超时；方法里面的单位是毫秒
-        customSessionManager.setGlobalSessionTimeout(20000);
+//        customSessionManager.setGlobalSessionTimeout(20000);
 
         return customSessionManager;
     }
