@@ -5,6 +5,8 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.crazycake.shiro.RedisCacheManager;
+import org.crazycake.shiro.RedisManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -82,6 +84,9 @@ public class ShiroConfig {
         //如果不是前后端分离，则不必设置下面的sessionManager
         securityManager.setSessionManager(sessionManager());
 
+        //使用自定义的cacheManager
+        securityManager.setCacheManager(cacheManager());
+
         //设置realm（推荐放到最后，不然某些情况会不生效）
         securityManager.setRealm(customRealm());
 
@@ -134,5 +139,29 @@ public class ShiroConfig {
     }
 
 
+    /**
+     * 配置redisManager
+     *
+     */
+    public RedisManager getRedisManager(){
+        RedisManager redisManager = new RedisManager();
+        redisManager.setHost("192.168.140.128");
+        redisManager.setPort(6379);
+        return redisManager;
+    }
 
+
+    /**
+     * 配置具体cache实现类
+     * @return
+     */
+    public RedisCacheManager cacheManager(){
+        RedisCacheManager redisCacheManager = new RedisCacheManager();
+        redisCacheManager.setRedisManager(getRedisManager());
+
+        //设置过期时间，单位是秒，20s
+        redisCacheManager.setExpire(20);
+
+        return redisCacheManager;
+    }
 }
