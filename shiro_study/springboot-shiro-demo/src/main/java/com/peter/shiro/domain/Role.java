@@ -1,11 +1,12 @@
 package com.peter.shiro.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 角色
  */
-public class Role {
+public class Role implements Serializable {
 
     private int id;
 
