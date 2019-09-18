@@ -30,7 +30,10 @@ public class SSOServerController {
             model.addAttribute("redirectUrl", redirectUrl);
             return "login";
         } else{
-            return "";
+            //有全局会话
+            //取出令牌信息，重定向到redirectUrl，把令牌带上
+            model.addAttribute("token", token );
+            return "redirect:" + redirectUrl;
         }
 
     }
