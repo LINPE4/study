@@ -17,4 +17,8 @@
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+  <listener>
+    <listener-class>cn.wolfcode.sso.listener.MySessionListener</listener-class>
+  </listener>
 </web-app>

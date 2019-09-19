@@ -1,5 +1,7 @@
 package cn.wolfcode.sso.controller;
 
+import cn.wolfcode.sso.utils.SSOClientUtil;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		req.setAttribute("serverLogOutUrl", SSOClientUtil.getServerLogOutUrl());
 		req.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(req, resp);
 	}
 }

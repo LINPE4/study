@@ -1,5 +1,6 @@
 package cn.wolfcode.sso.controller;
 
+import cn.wolfcode.sso.model.ClientInfoVO;
 import cn.wolfcode.sso.utils.MockDatabaseUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +8,10 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -58,10 +62,26 @@ public class SSOServerController {
 
     @RequestMapping("verify")
     @ResponseBody
-    public String verifyToken(String token) {
+    public String verifyToken(String token, String clientUrl, String jsessionid) {
         if (MockDatabaseUtil.T_TOKEN.contains(token)) {
+            //把客户端的登出地址记录
+            List<ClientInfoVO> clientInfoVOs = MockDatabaseUtil.T_CLIENT_INFO.get(token);
+            if (clientInfoVOs == null) {
+                clientInfoVOs = new ArrayList<>();
+                MockDatabaseUtil.T_CLIENT_INFO.put(token, clientInfoVOs);
+            }
+            ClientInfoVO vo = new ClientInfoVO();
+            vo.setClientUrl(clientUrl);
+            vo.setJessionid(jsessionid);
+            clientInfoVOs.add(vo);
             return "true";
         }
         return "false";
+    }
+
+    @RequestMapping("/logOut")
+    public String logOut(HttpSession httpSession) {
+        httpSession.invalidate();
+        return "logOut";
     }
 }

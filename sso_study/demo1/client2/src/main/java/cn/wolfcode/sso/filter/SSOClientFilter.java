@@ -39,6 +39,8 @@ public class SSOClientFilter implements Filter {
             String httpURL = SSOClientUtil.SERVER_URL_PREFIX + "/verify";
             Map<String, String> params = new HashMap<>();
             params.put("token", token);
+            params.put("clientUrl", SSOClientUtil.getClientLogOutUrl());
+            params.put("jsessionid", session.getId());
             try {
                 String isVerify = HttpUtil.sendHttpRequest(httpURL, params);
                 if ("true".equals(isVerify)) {
