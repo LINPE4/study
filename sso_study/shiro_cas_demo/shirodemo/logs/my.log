@@ -1,0 +1,126 @@
+2016-10-19 12:50:44,596 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 12:51:05,071 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 14:03:03,803 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:03:03,811 WARN [org.apache.shiro.authc.AbstractAuthenticator] - Authentication failed for token submission [org.apache.shiro.authc.UsernamePasswordToken - admin, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.ClassCastException: [C cannot be cast to java.lang.String
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:16)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:23)
+2016-10-19 14:03:46,572 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:03:46,580 WARN [org.apache.shiro.authc.AbstractAuthenticator] - Authentication failed for token submission [org.apache.shiro.authc.UsernamePasswordToken - admin, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.ClassCastException: [C cannot be cast to java.lang.String
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:16)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:23)
+2016-10-19 14:05:08,997 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:05:09,005 WARN [org.apache.shiro.authc.AbstractAuthenticator] - Authentication failed for token submission [org.apache.shiro.authc.UsernamePasswordToken - admin, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.ClassCastException: [C cannot be cast to java.lang.String
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:17)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:23)
+2016-10-19 14:05:36,118 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:05:36,126 WARN [org.apache.shiro.authc.AbstractAuthenticator] - Authentication failed for token submission [org.apache.shiro.authc.UsernamePasswordToken - admin, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.ClassCastException: [C cannot be cast to java.lang.String
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:16)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:23)
+2016-10-19 14:07:15,637 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:07:15,648 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 14:07:41,329 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:07:52,860 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:08:59,589 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:08:59,599 WARN [org.apache.shiro.authc.pam.ModularRealmAuthenticator] - Realm [cn.mldn.realm.MyRealm@33a10788] threw an exception during a multi-realm authentication attempt:
+org.apache.shiro.authc.UnknownAccountException: 用户名不存在！
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:20)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doMultiRealmAuthentication(ModularRealmAuthenticator.java:219)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:269)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:22)
+2016-10-19 14:08:59,603 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 14:09:14,436 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:09:14,445 WARN [org.apache.shiro.authc.pam.ModularRealmAuthenticator] - Realm [cn.mldn.realm.MyRealm@33a10788] threw an exception during a multi-realm authentication attempt:
+org.apache.shiro.authc.IncorrectCredentialsException: 密码输入错误！
+	at cn.mldn.realm.MyRealm.getAuthenticationInfo(MyRealm.java:23)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doMultiRealmAuthentication(ModularRealmAuthenticator.java:219)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:269)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:22)
+2016-10-19 14:09:14,447 WARN [org.apache.shiro.authc.pam.ModularRealmAuthenticator] - Realm [cn.mldn.realm.MyRealm2@1ae369b7] threw an exception during a multi-realm authentication attempt:
+org.apache.shiro.authc.UnknownAccountException: 用户名不存在！
+	at cn.mldn.realm.MyRealm2.getAuthenticationInfo(MyRealm2.java:20)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doMultiRealmAuthentication(ModularRealmAuthenticator.java:219)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:269)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:22)
+2016-10-19 14:09:22,912 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:09:22,922 WARN [org.apache.shiro.authc.pam.ModularRealmAuthenticator] - Realm [cn.mldn.realm.MyRealm2@7cdbc5d3] threw an exception during a multi-realm authentication attempt:
+org.apache.shiro.authc.UnknownAccountException: 用户名不存在！
+	at cn.mldn.realm.MyRealm2.getAuthenticationInfo(MyRealm2.java:20)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doMultiRealmAuthentication(ModularRealmAuthenticator.java:219)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:269)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:22)
+2016-10-19 14:09:22,925 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 14:22:11,139 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:22:11,346 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 14:22:23,718 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:22:37,397 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 14:58:43,726 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:04:03,116 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:04:14,719 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:05:51,046 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:05:59,629 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:07:15,344 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:07:21,775 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:15:02,964 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:15:14,073 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:15:26,875 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:16:45,227 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:17:03,960 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 15:18:24,321 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...
+2016-10-19 16:01:46,453 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 16:01:46,677 WARN [org.apache.shiro.authc.AbstractAuthenticator] - Authentication failed for token submission [org.apache.shiro.authc.UsernamePasswordToken - admin, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.ClassCastException: java.lang.String cannot be cast to [C
+	at cn.mldn.realm.MyRealm.doGetAuthenticationInfo(MyRealm.java:41)
+	at org.apache.shiro.realm.AuthenticatingRealm.getAuthenticationInfo(AuthenticatingRealm.java:568)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at cn.mldn.test.TestLoginDemo.main(TestLoginDemo.java:25)
+2016-10-19 16:02:20,248 INFO [org.apache.shiro.config.IniSecurityManagerFactory] - Realms have been explicitly set on the SecurityManager instance - auto-setting of realms will not occur.
+2016-10-19 16:02:20,495 INFO [org.apache.shiro.session.mgt.AbstractValidatingSessionManager] - Enabling session validation scheduler...

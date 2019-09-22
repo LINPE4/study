@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.mldn.dao.IMemberDAO">
+	<!-- 是进行登录认证使用的，即，根据身份信息取得密码进行认证 --> 
+	<select id="findById" parameterType="String" resultType="Member">
+		SELECT mid,password,name FROM member WHERE mid=#{mid}
+	</select>
+	<!-- 根据用户名查询出该用户对用的所有角色的标记名称（千万不要用中文） -->
+	<select id="findAllRoleByMember" parameterType="String" resultType="String">
+		SELECT flag FROM role WHERE rid IN (
+			SELECT rid FROM member_role WHERE mid=#{mid})
+	</select>
+	<!-- 查询出一个用户对应的所有权限数据 -->
+	<select id="findAllActionByMember" parameterType="String" resultType="String">
+		SELECT flag FROM action WHERE actid IN (
+			SELECT actid FROM role_action WHERE rid IN (
+				SELECT rid FROM member_role WHERE mid=#{mid}))
+	</select>
+</mapper>  
