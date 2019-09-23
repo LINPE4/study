@@ -1,12 +1,12 @@
-person:
-  last-name: hello
-  age: 18
-  boss: true
-  birth: 2017/02/02
-  maps: {k1: v1,k2: v2}
-  lists:
-    - lisi
-    - zhaoliu
-  dog:
-    name: 小狗
-    age: 12
+#person:
+#  last-name: hello
+#  age: 18
+#  boss: true
+#  birth: 2017/02/02
+#  maps: {k1: v1,k2: v2}
+#  lists:
+#    - lisi
+#    - zhaoliu
+#  dog:
+#    name: 小狗
+#    age: 12
