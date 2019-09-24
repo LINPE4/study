@@ -10,3 +10,24 @@
 #  dog:
 #    name: 小狗
 #    age: 12
+
+
+server:
+  port: 8081
+spring:
+  profiles:
+    active: prod
+
+---
+server:
+  port: 8083
+spring:
+  profiles: dev
+
+
+---
+
+server:
+  port: 8084
+spring:
+  profiles: prod
