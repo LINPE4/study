@@ -3,6 +3,10 @@ package com.atguigu.amqp;
 import com.atguigu.amqp.bean.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +22,23 @@ public class Springboot02AmqpApplicationTests {
 
 	@Autowired
 	RabbitTemplate rabbitTemplate;
+
+	@Autowired
+	AmqpAdmin amqpAdmin;
+
+	@Test
+	public void createExchange(){
+
+//		amqpAdmin.declareExchange(new DirectExchange("amqpadmin.exchange"));
+//		System.out.println("创建完成");
+
+//		amqpAdmin.declareQueue(new Queue("amqpadmin.queue",true));
+		//创建绑定规则
+
+//		amqpAdmin.declareBinding(new Binding("amqpadmin.queue", Binding.DestinationType.QUEUE,"amqpadmin.exchange","amqp.haha",null));
+
+		//amqpAdmin.de
+	}
 
 	/**
 	 * 1、单播（点对点）
