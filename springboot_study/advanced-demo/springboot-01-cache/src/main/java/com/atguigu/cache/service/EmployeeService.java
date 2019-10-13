@@ -3,6 +3,7 @@ package com.atguigu.cache.service;
 import com.atguigu.cache.bean.Employee;
 import com.atguigu.cache.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -119,6 +120,19 @@ public class EmployeeService {
         return employee;
     }
 
+    /**
+     * @CacheEvict：缓存清除
+     *  key：指定要清除的数据
+     *  allEntries = true：指定清除这个缓存中所有的数据
+     *  beforeInvocation = false：缓存的清除是否在方法之前执行
+     *      默认代表缓存清除操作是在方法执行之后执行;如果出现异常缓存就不会清除
+     *
+     *  beforeInvocation = true：
+     *      代表清除缓存操作是在方法运行之前执行，无论方法是否出现异常，缓存都清除
+     *
+     *
+     */
+    @CacheEvict(value="emp",beforeInvocation = true/*key = "#id",*/)
     public void deleteEmp(Integer id){
         System.out.println("deleteEmp:"+id);
         //employeeMapper.deleteEmpById(id);
