@@ -8,7 +8,7 @@
 <body>
 <h1 align="center">欢迎光临武林秘籍管理系统</h1>
 <div sec:authorize="!isAuthenticated()">
-	<h2 align="center">游客您好，如果想查看武林秘籍 <a th:href="@{/login}">请登录</a></h2>
+	<h2 align="center">游客您好，如果想查看武林秘籍 <a th:href="@{/userlogin}">请登录</a></h2>
 </div>
 <div sec:authorize="isAuthenticated()">
 	<h2><span sec:authentication="name"></span>，您好,您的角色有：
