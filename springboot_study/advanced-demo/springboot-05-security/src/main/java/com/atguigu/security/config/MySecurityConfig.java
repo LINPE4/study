@@ -25,7 +25,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         //4、默认post形式的 /login代表处理登陆
         //5、一但定制loginPage；那么 loginPage的post请求就是登陆
 
-
+        //开启自动配置的注销功能。
+        http.logout().logoutSuccessUrl("/");//注销成功以后来到首页
+        //1、访问 /logout 表示用户注销，清空session
+        //2、注销成功会返回 /login?logout 页面；
 
 
     }
