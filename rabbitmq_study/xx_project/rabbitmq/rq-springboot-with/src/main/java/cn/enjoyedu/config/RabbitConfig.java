@@ -9,10 +9,15 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
 
@@ -72,6 +77,8 @@ public class RabbitConfig {
         template.setConfirmCallback(confirmCallback());
         //TODO 失败回调
         template.setReturnCallback(returnCallback());
+        //TODO 设置其消息转换器
+        template.setMessageConverter(jsonMessageConverter());
         return template;
     }
 
@@ -188,6 +195,39 @@ public class RabbitConfig {
                 System.out.println("Returned Message："+msgJson);
             }
         };
+    }
+
+    //===============延迟队列==========
+    // 支付超时延时交换机
+    public static final String Delay_Exchange_Name = "delay.exchange";
+
+    // 超时订单关闭队列
+    public static final String Timeout_Trade_Queue_Name = "close_trade";
+
+    @Bean
+    public Queue delayPayQueue() {
+        return new Queue(RabbitConfig.Timeout_Trade_Queue_Name, true);
+    }
+    // 定义广播模式的延时交换机 无需绑定路由
+    @Bean
+    FanoutExchange delayExchange(){
+        Map<String, Object> args = new HashMap<String, Object>();
+        args.put("x-delayed-type", "direct");
+        FanoutExchange topicExchange = new FanoutExchange(RabbitConfig.Delay_Exchange_Name, true, false, args);
+        topicExchange.setDelayed(true);
+        return topicExchange;
+    }
+    // 绑定延时队列与交换机
+    @Bean
+    public Binding delayPayBind() {
+        return BindingBuilder.bind(delayPayQueue()).to(delayExchange());
+    }
+    //===============延迟队列end==========
+
+    // 定义消息转换器
+    @Bean
+    Jackson2JsonMessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
 }

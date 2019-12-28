@@ -1,9 +1,11 @@
 package cn.enjoyedu.controller;
 
 
+import cn.enjoyedu.config.RabbitConfig;
 import cn.enjoyedu.fanout.FanoutSender;
 import cn.enjoyedu.hello.DefaultSender;
 import cn.enjoyedu.topic.TopicSender;
+import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,5 +49,10 @@ public class RabbitTest {
     @GetMapping("/fanoutTest")
     public void fanoutTest() {
         fanoutSender.send("hellomsg:OK");
+    }
+
+    @GetMapping("/delayMsgTest")
+    public void delayMsgTest() {
+        defaultSender.sendDelay();
     }
 }

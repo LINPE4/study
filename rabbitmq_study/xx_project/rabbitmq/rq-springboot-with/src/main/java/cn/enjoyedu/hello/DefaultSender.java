@@ -1,6 +1,8 @@
 package cn.enjoyedu.hello;
 
 import cn.enjoyedu.RmConst;
+import cn.enjoyedu.config.RabbitConfig;
+import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +24,16 @@ public class DefaultSender {
         //this.rabbitTemplate.convertAndSend(RmConst.QUEUE_HELLO, sendMsg);
         //TODO 消息处理--(消费者处理时，有手动应答)
         this.rabbitTemplate.convertAndSend(RmConst.QUEUE_USER, sendMsg);
+    }
+
+    public void sendDelay() {
+        // 通过广播模式发布延时消息 延时30分钟 持久化消息 消费后销毁 这里无需指定路由，会广播至每个绑定此交换机的队列
+        rabbitTemplate.convertAndSend(RabbitConfig.Delay_Exchange_Name, "", "orderNo20191228", message ->{
+            message.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+            message.getMessageProperties().setDelay(30*1000);   // 毫秒为单位，指定此消息的延时时长
+            return message;
+        });
+        System.out.println("sended...");
     }
 
 }
