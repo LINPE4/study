@@ -2,6 +2,7 @@ package cn.enjoyedu.hello;
 
 import cn.enjoyedu.RmConst;
 import cn.enjoyedu.config.RabbitConfig;
+import cn.enjoyedu.model.User;
 import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,19 @@ public class DefaultSender {
     public void send(String msg) {
         String sendMsg = msg +"---"+ System.currentTimeMillis();;
         System.out.println("Sender : " + sendMsg);
+        User user = new User();
+        user.setName("user");
         //TODO 普通消息处理
-        //this.rabbitTemplate.convertAndSend(RmConst.QUEUE_HELLO, sendMsg);
+//        this.rabbitTemplate.convertAndSend(RmConst.QUEUE_HELLO, sendMsg);
         //TODO 消息处理--(消费者处理时，有手动应答)
-        this.rabbitTemplate.convertAndSend(RmConst.QUEUE_USER, sendMsg);
+        this.rabbitTemplate.convertAndSend(RmConst.QUEUE_HELLO, user);
+    }
+
+    public void sendUser(String msg) {
+        User user = new User();
+        user.setName("user");
+        //TODO 消息处理--(消费者处理时，有手动应答)
+        this.rabbitTemplate.convertAndSend(RmConst.QUEUE_USER, user);
     }
 
     public void sendDelay() {

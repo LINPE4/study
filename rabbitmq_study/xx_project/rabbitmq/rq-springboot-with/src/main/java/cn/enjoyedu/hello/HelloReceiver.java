@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
  *类说明：
  */
-@Component
-@RabbitListener(queues = "sb.hello")
+//@Component
+//@RabbitListener(queues = "sb.hello")
 public class HelloReceiver {
-    @RabbitHandler
-    public void process(String hello) {
-        System.out.println("HelloReceiver : " + hello);
-    }
+//    @RabbitHandler
+//    public void process(String hello) {
+//        System.out.println("HelloReceiver : " + hello);
+//    }
 
 }

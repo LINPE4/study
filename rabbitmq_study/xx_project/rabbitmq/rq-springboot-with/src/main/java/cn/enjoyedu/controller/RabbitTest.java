@@ -36,6 +36,14 @@ public class RabbitTest {
     }
 
     /**
+     * 普通类型测试
+     */
+    @GetMapping("/user")
+    public void user() { //mq的消息发送
+        defaultSender.sendUser("hellomsg!");
+    }
+
+    /**
      * topic exchange类型rabbitmq测试
      */
     @GetMapping("/topicTest")

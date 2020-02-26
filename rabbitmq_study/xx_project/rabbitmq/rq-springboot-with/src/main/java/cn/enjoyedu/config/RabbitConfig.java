@@ -146,18 +146,18 @@ public class RabbitConfig {
     //===============以上是验证Fanout Exchange的交换器==========
 
     //===============消费者确认==========
-    @Bean
-    public SimpleMessageListenerContainer messageContainer() {
-        SimpleMessageListenerContainer container
-                = new SimpleMessageListenerContainer(connectionFactory());
-        //TODO 绑定了这个sb.user队列
-        container.setQueues(userQueue());
-        //TODO 手动提交
-        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        //TODO 消费确认方法
-        container.setMessageListener(userReceiver);
-        return container;
-    }
+//    @Bean
+//    public SimpleMessageListenerContainer messageContainer() {
+//        SimpleMessageListenerContainer container
+//                = new SimpleMessageListenerContainer(connectionFactory());
+//        //TODO 绑定了这个sb.user队列
+//        container.setQueues(userQueue());
+//        //TODO 手动提交
+//        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+//        //TODO 消费确认方法
+//        container.setMessageListener(userReceiver);
+//        return container;
+//    }
 
     //===============生产者发送确认==========
     @Bean

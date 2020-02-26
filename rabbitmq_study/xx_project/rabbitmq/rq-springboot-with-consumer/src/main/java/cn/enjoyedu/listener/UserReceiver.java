@@ -1,4 +1,4 @@
-package cn.enjoyedu.hello;
+package cn.enjoyedu.listener;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
