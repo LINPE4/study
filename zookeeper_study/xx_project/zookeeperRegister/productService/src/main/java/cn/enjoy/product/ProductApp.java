@@ -1,0 +1,29 @@
+package cn.enjoy.product;
+
+import cn.enjoy.product.listener.InitListener;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.context.annotation.Bean;
+
+/**
+ * Created by VULCAN on 2018/7/25.
+ */
+@SpringBootApplication
+public class ProductApp {
+
+    //启动类
+    public static void main(String[] args) {
+        SpringApplication.run(ProductApp.class,args);
+    }
+
+
+
+    @Bean
+    //启动监听起，当tomcat启动的时候，会调用InitListener
+    public ServletListenerRegistrationBean servletListenerRegistrationBean() {
+        ServletListenerRegistrationBean servletListenerRegistrationBean = new ServletListenerRegistrationBean();
+        servletListenerRegistrationBean.setListener(new InitListener());
+        return  servletListenerRegistrationBean;
+    }
+}
