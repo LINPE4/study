@@ -2,18 +2,17 @@ package com.xkcoding.helloworld;
 
 import com.xkcoding.helloworld.proxy.mapper.CalculateService;
 import com.xkcoding.helloworld.proxy.mapper.HelloService;
+import com.xkcoding.helloworld.proxy.service.FruitsService;
 import com.xkcoding.helloworld.proxy.service.PeterService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -37,6 +36,10 @@ public class SpringBootDemoHelloworldApplicationTests {
     @Resource(name = "peterServiceImplProxy")
     PeterService peterServiceProxy;
 
+
+    @Autowired
+    FruitsService bananaService;
+
     @Test
     public void test() {
 //        String reu = helloService.getList("aa", "bb");
@@ -45,6 +48,15 @@ public class SpringBootDemoHelloworldApplicationTests {
         peterService.test("peter");
         System.out.println("");
         peterServiceProxy.test("peter proxy");
+    }
+
+    /**
+     * 代码注入的是Apple
+     * 在容器创建后重新注入了Banana
+     */
+    @Test
+    public void test3() {
+        System.out.println(bananaService.desc(2));
     }
 
     @Test

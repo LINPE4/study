@@ -5,16 +5,21 @@
  */
 package com.xkcoding.helloworld.proxy.handler;
 
+import com.xkcoding.helloworld.proxy.service.FruitsService;
+import com.xkcoding.helloworld.proxy.service.multi.BananaServiceImpl;
 import com.xkcoding.helloworld.proxy.service.proxy.ServiceImplProxyFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ResourceLoaderAware;
+import org.springframework.context.support.AbstractRefreshableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -65,6 +70,7 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
             registry.registerBeanDefinition(beanClazz.getSimpleName(), definition);
         }
 
+        // 生成代理类并注入
         Set<Class<?>> beanProxyClazzs = scannerPackages("com.xkcoding.helloworld.proxy.service.impl");
         for (Class beanClazz : beanProxyClazzs) {
             System.out.println(beanClazz);
@@ -81,6 +87,27 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
             registry.registerBeanDefinition(proxyBeanName, definition);
         }
 
+        // 删除原有实现类，重新注入另外的实现类
+        FruitsService fBean = applicationContext.getBean(FruitsService.class);
+        System.out.println("fruits: " + fBean.desc(2));
+        // 输出FruitsService的Bean基本信息
+        System.out.println(fBean.getClass());//class yjmyzz.FooA
+        String beanName = applicationContext.getBeanNamesForType(FruitsService.class)[0];
+        System.out.println(beanName);//appleServiceImpl
+        System.out.println(applicationContext.isSingleton(beanName));
+
+        //销毁FruitsService实例
+        removeBean(registry, beanName);
+        System.out.println(applicationContext.containsBean(beanName));//false
+        System.out.println("------------");
+
+        //注入新Bean
+        beanName = "bananaService";
+        addBean(registry, beanName, BananaServiceImpl.class);
+
+        //取出新实例
+        fBean = applicationContext.getBean(beanName, FruitsService.class);
+        System.out.println("fruits: " + fBean.desc(2));
     }
 
     private static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
@@ -159,5 +186,31 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
         else
             return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
     }
+
+
+    /**
+     * 向容器中动态添加Bean
+     *
+     * @param beanName
+     * @param beanClass
+     */
+    static void addBean(BeanDefinitionRegistry beanDefReg, String beanName, Class beanClass) {
+        BeanDefinitionBuilder beanDefBuilder = BeanDefinitionBuilder.genericBeanDefinition(beanClass);
+        BeanDefinition beanDef = beanDefBuilder.getBeanDefinition();
+        if (!beanDefReg.containsBeanDefinition(beanName)) {
+            beanDefReg.registerBeanDefinition(beanName, beanDef);
+        }
+    }
+
+    /**
+     * 从容器中移除Bean
+     *
+     * @param beanName
+     */
+    static void removeBean(BeanDefinitionRegistry beanDefReg, String beanName) {
+        BeanDefinition beanDefinition = beanDefReg.getBeanDefinition(beanName);
+        beanDefReg.removeBeanDefinition(beanName);
+    }
+
 
 }
