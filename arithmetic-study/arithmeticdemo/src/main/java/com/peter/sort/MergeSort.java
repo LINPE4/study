@@ -19,25 +19,25 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int arr[] = {8, 4, 5, 7, 1, 3, 6, 2};
-        int temp[] = new int[arr.length]; //归并排序需要一个额外空间
 
-        mergeSort(arr, 0, arr.length - 1, temp);
+        mergeSort(arr, 0, arr.length - 1);
         System.out.println("排序后的结果为：" + Arrays.toString(arr));
     }
 
-    private static void mergeSort(int[] arr, int left, int right, int[] temp) {
+    private static void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
-            mergeSort(arr, left, mid, temp);
-            mergeSort(arr, mid + 1, right, temp);
-            merge(arr, left, mid, right, temp);
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+            merge(arr, left, mid, right);
         }
     }
 
-    private static void merge(int[] arr, int left, int mid, int right, int[] temp) {
+    private static void merge(int[] arr, int left, int mid, int right) {
         int i = left;
         int j = mid + 1;
         int tempIndex = 0;
+        int[] temp = new int[right - left + 1];
         while (i <= mid && j <= right) {
             if (arr[i] <= arr[j]) {
                 temp[tempIndex++] = arr[i++];
@@ -52,9 +52,8 @@ public class MergeSort {
         while (j<= right) {
             temp[tempIndex++] = arr[j++];
         }
-        tempIndex = 0;
-        while (left <= right) {
-            arr[left++] = temp[tempIndex++];
+        for (int k = 0; k < temp.length; k++) {
+            arr[left + k] = temp[k];
         }
     }
 
