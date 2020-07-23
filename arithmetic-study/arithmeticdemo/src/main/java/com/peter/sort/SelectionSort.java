@@ -18,11 +18,11 @@ package com.peter.sort;
  */
 public class SelectionSort {
 
-    public int[] sort(int[] sourceArray) throws Exception {
-        for (int i = 0; i < sourceArray.length; i++) {
+    public int[] sort(int[] sourceArray) {
+        for (int i = 0; i < sourceArray.length - 1 ; i++) {
             int minIndex = i;
             for (int j = i + 1; j < sourceArray.length; j++) {
-                if (sourceArray[j] < sourceArray[i]) {
+                if (sourceArray[j] < sourceArray[minIndex]) {
                     minIndex = j;
                 }
             }
@@ -34,5 +34,15 @@ public class SelectionSort {
             }
         }
         return sourceArray;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 49, 38, 65, 97, 23, 22, 76, 1, 5, 8, 2, 0, -1, 22 };
+        SelectionSort q = new SelectionSort();
+        q.sort(arr);
+        System.out.println("排序后:");
+        for (int i : arr) {
+            System.out.println(i);
+        }
     }
 }
