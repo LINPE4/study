@@ -1,0 +1,1 @@
+sh seata-server.sh -p 8091 -h 127.0.0.1 -m file

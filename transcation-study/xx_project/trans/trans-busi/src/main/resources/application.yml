@@ -1,0 +1,9 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: trans-busi
+
+zookeeper:
+  url: zookeeper://192.168.0.128:2181
+

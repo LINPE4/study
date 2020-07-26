@@ -1,0 +1,20 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: seata-busi
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://127.0.0.1:3306/enjoy?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+
+tx-seata:
+  applicationId: enjoy-busi
+  txServiceGroup: enjoy-tx-group
+zookeeper:
+  url: zookeeper://127.0.0.1:2181
+dubbo:
+  name: seata-busi
+  port: 20880
+

@@ -1,0 +1,18 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    druid:
+      jamesDB:
+        url: jdbc:mysql://192.168.0.128:3307/enjoy?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+        username: root
+        password: root
+      peterDB:
+        url: jdbc:mysql://192.168.0.128:3307/enjoy2?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+        username: root
+        password: root
+  #jta相关参数配置
+  jta:
+    log-dir: classpath:tx-logs
+    transaction-manager-id: txManager
+  
