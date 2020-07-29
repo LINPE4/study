@@ -108,5 +108,14 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.xiangxue.jack.MicroWebApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
