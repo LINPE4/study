@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 @RefreshScope
 @Slf4j
-@RestController
+//@RestController
 public class UserController {
 
     private org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
