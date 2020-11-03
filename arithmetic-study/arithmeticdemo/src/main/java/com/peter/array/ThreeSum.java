@@ -50,7 +50,7 @@ public class ThreeSum {
                 } else if (sum < 0) {
                     left ++;
                 } else {
-                    right ++;
+                    right --;
                 }
             }
 
