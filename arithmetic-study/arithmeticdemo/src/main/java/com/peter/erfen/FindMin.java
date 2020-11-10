@@ -14,8 +14,7 @@ package com.peter.erfen;
  * @date 2020/11/10 16:07
  */
 public class FindMin {
-    public int findMin(int[] nums) {
-
+    public static int findMin(int[] nums) {
         int left = 0, right = nums.length - 1;
         while (left < right) {
             int middle = (left + right) / 2;
@@ -28,5 +27,13 @@ public class FindMin {
             }
         }
         return nums[left];
+    }
+
+    public static void main(String[] args) {
+        int[] num = new int[] {
+                3,4,5,1,2
+//                4,5,6,7,0,1,2
+        };
+        System.out.println(findMin(num));
     }
 }
