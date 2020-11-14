@@ -14,8 +14,9 @@ package com.peter.trie;
  * @date 2020/11/14 14:13
  */
 public class Trie {
-    private boolean isWord = false;
-    private Trie[] children = new Trie[26];
+    public boolean isWord = false;
+    public String word = null;
+    public Trie[] children = new Trie[26];
     public Trie() {
 
     }
@@ -31,6 +32,7 @@ public class Trie {
             root = root.children[chars[i]-'a'];
         }
         root.isWord = true;
+        root.word = word;
     }
 
     /** Returns if the word is in the trie. */
