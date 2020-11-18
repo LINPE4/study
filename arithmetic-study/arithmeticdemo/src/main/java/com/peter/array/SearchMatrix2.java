@@ -13,7 +13,7 @@ package com.peter.array;
  * @type SearchMatrix
  * @date 2020/11/18 10:17
  */
-public class SearchMatrix {
+public class SearchMatrix2 {
 
     public boolean searchMatrix(int[][] matrix, int target) {
         int row = matrix.length - 1;
