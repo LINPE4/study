@@ -3,7 +3,7 @@
  * File created at 2020/11/10 11:28
  * Copyright (c) 2018 linklogis.com all rights reserved.
  */
-package com.peter.erfen;
+package com.peter.array;
 
 /**
  * 功能描述
