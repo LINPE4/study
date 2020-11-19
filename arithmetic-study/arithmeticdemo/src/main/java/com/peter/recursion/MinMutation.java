@@ -42,7 +42,7 @@ public class MinMutation {
             if (diff == 1 && !set.contains(str)) {
                 // 匹配到基因库，进行下一个匹配
                 set.add(str);
-                dfs(set, step + 1, start, end, bank);
+                dfs(set, step + 1, str, end, bank);
                 // 回溯，丢弃此基因库匹配
                 set.remove(str);
             }

@@ -7,7 +7,7 @@ package com.peter.erfen;
 
 /**
  * 功能描述
- *      153. 寻找旋转排序数组中的最小值   https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
+ *      153. 寻找旋转排序数组中的最大值   https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
  * @author linlipeng
  * @version 1.0
  * @type FindMin
