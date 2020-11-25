@@ -3,7 +3,7 @@
  * File created at 2020/11/25 15:20
  * Copyright (c) 2018 linklogis.com all rights reserved.
  */
-package com.peter.stack;
+package com.peter.heap;
 
 /**
  * 功能描述
