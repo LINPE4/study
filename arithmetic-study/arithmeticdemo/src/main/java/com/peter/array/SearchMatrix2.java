@@ -8,6 +8,9 @@ package com.peter.array;
 /**
  * 功能描述
  *  240. 搜索二维矩阵 II  https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+ *       1    4    7   11   15
+ *       2    5    8   12   19
+ *       3    6    9   16   22
  * @author linlipeng
  * @version 1.0
  * @type SearchMatrix
