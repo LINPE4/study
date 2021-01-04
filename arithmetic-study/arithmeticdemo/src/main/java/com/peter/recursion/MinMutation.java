@@ -24,9 +24,13 @@ public class MinMutation {
     }
 
     private void dfs(HashSet<String> set, Integer step,String start, String end, String[] bank) {
+        if (step >= minStepCount) {
+            return;
+        }
         // 如果相等，则比较步数，取最小的步数
         if (start.equals(end)) {
             minStepCount = Math.min(step, minStepCount);
+            return;
         }
         // 遍历基因库
         for (String str : bank) {
