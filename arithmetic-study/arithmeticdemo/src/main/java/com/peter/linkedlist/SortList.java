@@ -24,51 +24,58 @@ package com.peter.linkedlist;
  */
 public class SortList {
     public ListNode sortList(ListNode head) {
-        return sortList(head, null);
-    }
-
-    public ListNode sortList(ListNode head, ListNode tail) {
-        if (head == null) {
+        // 1、递归结束条件
+        if (head == null || head.next == null) {
             return head;
         }
-        if (head.next == tail) {
-            head.next = null;
+
+        // 2、找到链表中间节点并断开链表 & 递归下探
+        ListNode midNode = middleNode(head);
+        ListNode rightHead = midNode.next;
+        midNode.next = null;
+
+        ListNode left = sortList(head);
+        ListNode right = sortList(rightHead);
+
+        // 3、当前层业务操作（合并有序链表）
+        return mergeTwoLists(left, right);
+    }
+
+    //  找到链表中间节点（876. 链表的中间结点）
+    private ListNode middleNode(ListNode head) {
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode slow = head;
-        ListNode fast = head;
-        while (fast != tail) {
+        ListNode fast = head.next.next;
+
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            fast = fast.next;
-            if (fast != tail) {
-                fast = fast.next;
-            }
+            fast = fast.next.next;
         }
-        ListNode mid = slow;
-        ListNode leftListNode = sortList(head, mid);
-        ListNode rightListNode = sortList(mid, tail);
-        return merge(leftListNode, rightListNode);
+
+        return slow;
     }
 
-    public ListNode merge(ListNode head1, ListNode head2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
-        while (temp1 != null && temp2!= null) {
-            if (temp1.val < temp2.val) {
-                temp.next = temp1;
-                temp1 = temp1.next;
+    // 合并两个有序链表（21. 合并两个有序链表）
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode sentry = new ListNode(-1);
+        ListNode curr = sentry;
+
+        while(l1 != null && l2 != null) {
+            if(l1.val < l2.val) {
+                curr.next = l1;
+                l1 = l1.next;
             } else {
-                temp.next = temp2;
-                temp2 = temp2.next;
+                curr.next = l2;
+                l2 = l2.next;
             }
-            temp = temp.next;
+
+            curr = curr.next;
         }
-        if (temp1 != null) {
-            temp.next = temp1;
-        } else {
-            temp.next = temp2;
-        }
-        return dummyHead.next;
+
+        curr.next = l1 != null ? l1 : l2;
+        return sentry.next;
     }
 
 }
