@@ -58,24 +58,25 @@ public class SortList {
     }
 
     // 合并两个有序链表（21. 合并两个有序链表）
-    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode sentry = new ListNode(-1);
-        ListNode curr = sentry;
-
-        while(l1 != null && l2 != null) {
-            if(l1.val < l2.val) {
-                curr.next = l1;
-                l1 = l1.next;
+    private ListNode mergeTwoLists(ListNode head1, ListNode head2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
+        while (temp1 != null && temp2!= null) {
+            if (temp1.val < temp2.val) {
+                temp.next = temp1;
+                temp1 = temp1.next;
             } else {
-                curr.next = l2;
-                l2 = l2.next;
+                temp.next = temp2;
+                temp2 = temp2.next;
             }
-
-            curr = curr.next;
+            temp = temp.next;
         }
-
-        curr.next = l1 != null ? l1 : l2;
-        return sentry.next;
+        if (temp1 != null) {
+            temp.next = temp1;
+        } else {
+            temp.next = temp2;
+        }
+        return dummyHead.next;
     }
 
 }
