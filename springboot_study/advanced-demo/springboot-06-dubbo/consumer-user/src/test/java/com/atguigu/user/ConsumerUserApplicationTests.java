@@ -1,5 +1,6 @@
 package com.atguigu.user;
 
+import com.atguigu.provider.UserProvider;
 import com.atguigu.user.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,9 @@ public class ConsumerUserApplicationTests {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	UserProvider userProvider;
 
 	@Test
 	public void contextLoads() {
